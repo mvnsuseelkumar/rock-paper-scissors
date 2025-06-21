@@ -1,144 +1,432 @@
-body{
-    margin: 0px;
-    padding: 0px;
-    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-    background: linear-gradient(to right, #0088ff, #0079ff, #0068ff, #0056ff, #003fff, #3834ff, #5224ff, #6800ff, #8900ff, #a400ff, #bc00ff, #d200ff);
-    /* background: linear-gradient(to right top, #0088ff, #0079ff, #0068ff, #0056ff, #003fff, #3834ff, #5224ff, #6800ff, #8900ff, #a400ff, #bc00ff, #d200ff); */
+@import url('https://fonts.googleapis.com/css2?family=Audiowide&family=Orbitron:wght@400..900&display=swap');
+
+body {
+  margin: 0px;
+  padding: 0px;
+  /* font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; */
+  font-family: "Orbitron", system-ui, sans-serif;
+  background: linear-gradient(to right, #0088ff, #0079ff, #0068ff, #0056ff, #003fff, #3834ff, #5224ff, #6800ff, #8900ff, #a400ff, #bc00ff, #d200ff);
+  /* background: linear-gradient(to right top, #0088ff, #0079ff, #0068ff, #0056ff, #003fff, #3834ff, #5224ff, #6800ff, #8900ff, #a400ff, #bc00ff, #d200ff); */
 }
 
-.heading{
-    color:rgb(164, 255, 246);
-    text-shadow: 5px 5px 5px rgba(0, 0, 0, 0.822),10px 10px 10px rgb(91, 3, 255);
-    font-size: 4rem;
-    text-align: center;
-    margin: 20px;
+#game {
+  margin-top: 10px;
+}
+
+.heading {
+  color: rgb(164, 255, 246);
+  text-shadow: 5px 5px 5px rgba(0, 0, 0, 0.822), 10px 10px 10px rgb(91, 3, 255);
+  font-size: 4rem;
+  text-align: center;
+  margin: 20px;
 
 }
 
-.con{
-    width: 600px;
-    margin: 0px auto;
-    text-align: center;
+.con {
+  width: 600px;
+  margin: 0px auto;
+  text-align: center;
 }
 
-.img-con{
-    width: 500px;
-    margin: 20px auto;
-    text-align: center;
+#rounds {
+  display: inline-block;
+  width: 90%;
+  padding: 10px;
+  text-align: center;
+  font-size: 2rem;
+  border: 2px solid black;
+  border-radius: 20px;
+  background-color: wheat;
+  display: none;
 }
 
-.image{
-    width: 120px;
-    height: 120px;
-    border-radius: 50%;
-    overflow: hidden;
-    display: inline-block;
+.img-con {
+  width: 500px;
+  margin: 15px auto;
+  text-align: center;
+}
+
+.image {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  overflow: hidden;
+  display: inline-block;
+  margin: 10px;
+  border: 5px solid transparent;
+  transition: all 0.5s ease;
+}
+
+.image:hover {
+  border: 5px solid black;
+}
+
+.image img {
+  width: 100%;
+}
+
+.image:active {
+  /* border: none; */
+  border: 5px solid transparent;
+  transform: scale(0.8);
+}
+
+#rock:disabled,
+#paper:disabled,
+#scissors:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+#rock:not(:disabled):hover,
+#paper:not(:disabled):hover,
+#scissors:not(:disabled):hover {
+  transform: scale(1.05);
+  transition: transform 0.2s;
+}
+
+.score-con {
+  width: 300px;
+  margin: 0px auto;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  color: rgb(145, 224, 255);
+  text-shadow: 5px 5px 5px rgba(0, 0, 0, 0.671);
+}
+
+#user-score,
+#computer-score {
+  font-size: 4rem;
+  color: rgb(196, 238, 255);
+}
+
+
+
+.btn {
+  padding: 15px 40px;
+  font-size: 1.4rem;
+  font-weight: bold;
+  border-radius: 20px;
+  border: 0.1px solid black;
+  margin: 20px;
+  transition: all 0.5s ease;
+}
+
+.btn:active {
+  /* border: none; */
+  transform: scale(0.8);
+}
+
+button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+#btn-st {
+  background-color: rgb(0, 255, 0);
+}
+
+#btn-reset {
+  background-color: rgb(255, 0, 0);
+  display: none;
+  margin: 20px auto;
+}
+
+#btn-next {
+  background-color: #00ff88;
+  display: none;
+  margin: 20px auto;
+}
+
+#btn-end {
+  background-color: #9c27b0;
+  display: none;
+  margin: 20px auto;
+}
+
+.msg {
+  color: rgb(0, 0, 0);
+  padding: 15px;
+  width: 90%;
+  background-color: #00ff99;
+  display: none;
+  border-radius: 20px;
+  font-size: 1.4rem;
+  border: 2px solid black;
+  margin-top: 20px;
+  box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.452);
+  transition: all 0.5s ease;
+}
+
+#select-player-mode-dialog-box {
+  width: 80%;
+  position: absolute;
+  top: -50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  padding: 40px;
+  display: grid;
+  grid-template-columns: 6fr 6fr;
+  overflow: hidden;
+  background: linear-gradient(to right top, #0088ff, #0079ff, #0068ff, #0056ff, #003fff, #3834ff, #5224ff, #6800ff, #8900ff, #a400ff, #bc00ff, #d200ff);
+  border: 2px solid black;
+  border-radius: 20px;
+}
+
+.entry-animation {
+  animation: entry 1s forwards;
+}
+
+@keyframes entry {
+  from {
+    top: -50%;
+    opacity: 0;
+  }
+
+  to {
+    top: 50%;
+    opacity: 1;
+  }
+}
+
+.exit-animation {
+  animation: exit 1s forwards;
+}
+
+@keyframes exit {
+  from {
+    top: 50%;
+    opacity: 1;
+  }
+
+  to {
+    top: -50%;
+    opacity: 0;
+  }
+}
+
+#vscon {
+  width: 80%;
+  position: absolute;
+  top: -50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  border: 2px solid black;
+  border-radius: 20px;
+  display: none;
+  overflow: hidden;
+}
+
+#vsimg{
+  width: 100%;
+}
+
+.vscomputer,
+.vsplayer {
+  /* width: 100%; */
+  /* height: 350px; */
+  padding: 10px;
+  /* border: 2px solid black; */
+  border-radius: 20px;
+  margin: 20px;
+  background: linear-gradient(to right top, rgba(0, 255, 200, 0.2), rgba(0, 100, 255, 0.2));
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  box-shadow: 0 8px 32px rgba(31, 38, 135, 0.37);
+  backdrop-filter: blur(8px);
+  transition: all 0.3s ease;
+}
+
+.vscomputer:active,
+.vsplayer:active {
+  transform: scale(0.9);
+}
+
+
+.vscomputer-img-con,
+.vsplayer-img-con {
+  width: 250px;
+  height: 250px;
+  overflow: hidden;
+  border-radius: 50%;
+  margin: 20px auto;
+}
+
+.vscomputer-img-con img,
+.vsplayer-img-con img {
+  width: 100%;
+}
+
+.vscomputer h2,
+.vsplayer h2 {
+  color: cornsilk;
+  text-align: center;
+}
+
+.vs-text {
+  font-family: "Audiowide", "Trebuchet MS", "Verdana", "Arial", sans-serif;
+  font-size: 40px;
+}
+
+#winner-dialog-box{
+  width: 80%;
+  aspect-ratio: 16/9;
+  position: absolute;
+  top: -50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  overflow: hidden;
+  background-color: rgba(255, 255, 255, 0.8);
+  border-radius: 20px;
+  box-shadow: 0px 4px 10px rgba(0,0,0,0.1);
+  display: none;
+}
+
+.winner-con{
+  position: relative;
+}
+
+#winner-video{
+  width: 100%;
+  height: 100%;
+  aspect-ratio: 16/9;
+}
+
+#winner-text{
+  position: absolute;
+  font-family: "Audiowide", "Trebuchet MS", "Verdana", "Arial", sans-serif;
+  font-size: 5rem;
+  margin: 40vh auto;
+  color: #85a3ff;
+  text-shadow: 5px 5px 5px blue,10px 10px 10px purple;
+  width: 100%;
+  text-align: center;
+}
+
+/* Small devices (phones, less than 600px) */
+@media (max-width: 600px) {
+  .heading {
+    font-size: 2rem;
     margin: 10px;
-    border: 5px solid transparent;
-    transition: all 0.5s ease;
-}
+  }
 
-.image:hover{
-    border: 5px solid black;
-}
+  .con {
+    width: 90%;
+  }
 
-.image img{
+  #rounds {
+    font-size: 1.2rem;
+    padding: 10px 20px;
+  }
+
+  .img-con {
     width: 100%;
-}
+  }
 
-.image:active{
-    /* border: none; */
-    border: 5px solid transparent;
-    transform: scale(0.8);
-}
+  .image {
+    width: 80px;
+    height: 80px;
+    margin: 5px;
+  }
 
-.score-con{
-    width: 300px;
-    margin: 20px auto;
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    color: rgb(145, 224, 255);
-    text-shadow: 5px 5px 5px rgba(0, 0, 0, 0.671);
-}
-
-#user-score,#computer-score{
-    font-size: 5rem;
-    color: rgb(196, 238, 255);
-}
-
-
-
-.btn{
-    padding: 15px 50px;
-    font-size: 1.4rem;
-    font-weight: bold;
-    border-radius: 20px;
-    border: 0.1px solid black;
-    margin: 20px;
-    transition: all 0.5s ease;
-}
-
-.btn:active{
-    /* border: none; */
-    transform: scale(0.8);
-}
-
-#btn-st{
-    background-color: rgb(0, 255, 0);
-}
-
-#btn-reset{
-    background-color: rgb(255, 0, 0);
-    display: none;
-    margin: 20px auto;
-}
-
-.msg{
-    color: rgb(0, 0, 0);
-    padding: 15px 50px;
-    background-color: #00ff99;
-    display: none;
-    border-radius: 20px;
-    font-size: 1.4rem;
-    border: 2px solid black;
-    margin-top: 20px;
-    box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.452);
-    transition: all 0.5s ease;
-}
-
-.player{
-    padding: 50px;
-    width: 80%;
-    display: grid;
-    grid-template-columns: 6fr 6fr;
-    overflow: hidden;
-    background: linear-gradient(to right top, #0088ff, #0079ff, #0068ff, #0056ff, #003fff, #3834ff, #5224ff, #6800ff, #8900ff, #a400ff, #bc00ff, #d200ff);
-    border: 2px solid black;
-    border-radius: 20px;
-}
-
-.vscomputer,.vsplayer{
+  .score-con {
     width: 100%;
-    height: 350px;
-    border: 2px solid black;
+    flex-direction: column;
+  }
+
+  #user-score,
+  #computer-score {
+    font-size: 2rem;
+  }
+
+  .btn {
+    padding: 10px 20px;
+    font-size: 1rem;
+    margin: 10px;
+  }
+
+  .msg {
+    font-size: 1rem;
+    padding: 10px;
+  }
+
+  #select-player-mode-dialog-box {
+    width: 90%;
+    grid-template-columns: 1fr;
+    padding: 20px;
+  }
+
+  .vscomputer-img-con,
+  .vsplayer-img-con {
+    width: 180px;
+    height: 180px;
+  }
+
+  .vs-text {
+    font-size: 24px;
+  }
 }
 
-.vscomputer-img-con,.vsplayer-img-con{
-    width: 250px;
-    height: 250px;
-    overflow: hidden;
-    border-radius: 50%;
-    margin: 20px auto;
-}
 
-.vscomputer-img-con img,.vsplayer-img-con img{
+@media (min-width: 601px) and (max-width: 900px) {
+  .heading {
+    font-size: 3rem;
+  }
+
+  .con {
+    width: 90%;
+  }
+
+  #rounds {
+    font-size: 1.5rem;
+    padding: 10px 30px;
+  }
+
+  .img-con {
     width: 100%;
-}
+  }
 
-.vscomputer h2,.vsplayer h2{
-    color: cornsilk;
-    text-align: center;
+  .image {
+    width: 100px;
+    height: 100px;
+    margin: 8px;
+  }
+
+  .score-con {
+    width: 90%;
+  }
+
+  #user-score,
+  #computer-score {
+    font-size: 3rem;
+  }
+
+  .btn {
+    padding: 12px 30px;
+    font-size: 1.2rem;
+    margin: 15px;
+  }
+
+  .msg {
+    font-size: 1.2rem;
+    padding: 12px;
+  }
+
+  #select-player-mode-dialog-box {
+    width: 85%;
+    grid-template-columns: 1fr 1fr;
+    padding: 30px;
+  }
+
+  .vscomputer-img-con,
+  .vsplayer-img-con {
+    width: 220px;
+    height: 220px;
+  }
+
+  .vs-text {
+    font-size: 32px;
+  }
 }

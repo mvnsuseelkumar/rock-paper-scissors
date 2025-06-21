@@ -1,43 +1,73 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Rock_Paper_Scissord</title>
+    <title>Rock_Paper_Scissors</title>
     <link rel="stylesheet" href="./styles.css">
 </head>
+
 <body>
-    <h1 class="heading">Rock Paper Scissors</h1>
-    <div class="con">
-        <div class="img-con">
-            <div class="image" id="rock">
-                <img src="./images/rock.png" alt="Rock'">
+    <section id="game">
+        <h1 class="heading">Rock Paper Scissors</h1>
+        <div class="con">
+            <div id="rounds"></div>
+            <div class="img-con">
+                <div class="image" id="rock">
+                    <img src="./images/rock.png" alt="Rock">
+                </div>
+                <div class="image" id="paper">
+                    <img src="./images/paper.png" alt="Paper">
+                </div>
+                <div class="image" id="scissors">
+                    <img src="./images/scissors.png" alt="Scissors">
+                </div>
             </div>
-            <div class="image" id="paper">
-                <img src="./images/paper.png" alt="Paper">
+            <div class="score-con">
+                <div class="user">
+                    <h2>User Score</h2>
+                    <div id="user-score">0</div>
+                </div>
+                <div class="computer">
+                    <h2>Computer Score</h2>
+                    <div id="computer-score">0</div>
+                </div>
             </div>
-            <div class="image" id="scissors">
-                <img src="./images/scissors.png" alt="Scissors">
-            </div>
+            <div class="msg" id="msg-con"></div>
+            <button type="button" class="btn" id="btn-st">Start</button>
+            <button type="button" class="btn" id="btn-next">Next Round</button>
+            <button type="button" class="btn" id="btn-reset">Reset</button>
+            <button type="button" class="btn" id="btn-end">End</button>
         </div>
-        <div class="score-con">
-            <div class="user"><h2>User Score</h2><div id="user-score">0</div></div>
-            <div class="computer"><h2>Computer Score</h2><div id="computer-score">0</div></div>
-        </div>
-        <div class="msg"id="msg-con">Let's Start</div>
-        <button type="button" class="btn" id="btn-st">Start</button>
-        <button type="button" class="btn" id="btn-reset">Reset</button>
-    </div>
-    <div class="player">
-        <div class="vscomputer">
+    </section>
+    <section id="select-player-mode-dialog-box" class="entry-animation">
+        <div class="vscomputer" onclick="select_mode('vscomputer')">
             <div class="vscomputer-img-con"><img src="./images/vscomputer.jpg" alt="vscomputer"></div>
-            <h2>You VS PC</h2>
+            <h2 class="vs-text"><span style="color:rgb(255, 0, 51);">Player <span style="font-size: 50px;">V</span></span><span style="font-size: 60px; font-style: italic; padding-right: 10px; color: rgb(255, 53, 26);">|</span><span style="color: rgb(255, 106, 0);"><span style="font-size: 50px;">S</span> PC</span></h2>
         </div>
-        <div class="vsplayer">
+        <div class="vsplayer" onclick="select_mode('vsplayer')">
             <div class="vsplayer-img-con"><img src="./images/vsplayer2.png" alt="vsplayer"></div>
-            <h2>Player 1 vs Player 2</h2>
+            <h2 class="vs-text"><span style="color:rgb(255, 0, 51);">Player 1 <span style="font-size: 50px;">V</span></span><span style="font-size: 60px; font-style: italic; padding-right: 10px; color: rgb(255, 53, 26);">|</span><span style="color: rgb(255, 106, 0);"><span style="font-size: 50px;">S</span> Player 2</span></h2>
         </div>
-    </div>
+    </section>
+    <section id="vscon">
+        <img id="vsimg" alt="vsimage">
+    </section>
+    <section id="winner-dialog-box">
+        <div class="winner-con">
+            <h2 id="winner-text"></h2>
+            <div class="winner-video-con">
+                <video id="winner-video" autoplay loop muted>
+                    <source src="./videos/winergif.mp4" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>
+            </div>
+        </div>
+    </section>
+
+    </section>
     <script src="./script.js"></script>
 </body>
+
 </html>
