@@ -9,6 +9,11 @@ body {
   /* background: linear-gradient(to right top, #0088ff, #0079ff, #0068ff, #0056ff, #003fff, #3834ff, #5224ff, #6800ff, #8900ff, #a400ff, #bc00ff, #d200ff); */
 }
 
+* {
+  backface-visibility: hidden;
+  transform-style: preserve-3d;
+}
+
 #game {
   margin-top: 10px;
 }
@@ -22,6 +27,10 @@ body {
 
 }
 
+button,.vscomputer,.vsplayer{
+  cursor: pointer;
+}
+
 .con {
   width: 600px;
   margin: 0px auto;
@@ -29,7 +38,7 @@ body {
 }
 
 #rounds {
-  display: inline-block;
+  /* display: inline-block; */
   width: 90%;
   padding: 10px;
   text-align: center;
@@ -53,7 +62,8 @@ body {
   overflow: hidden;
   display: inline-block;
   margin: 10px;
-  border: 5px solid transparent;
+  border: 5px solid rgb(133, 122, 255);
+  padding: 0;
   transition: all 0.5s ease;
 }
 
@@ -135,17 +145,17 @@ button:disabled {
   margin: 20px auto;
 }
 
-#btn-next {
+/* #btn-next {
   background-color: #00ff88;
   display: none;
   margin: 20px auto;
-}
+} */
 
-#btn-end {
+/* #btn-end {
   background-color: #9c27b0;
   display: none;
   margin: 20px auto;
-}
+} */
 
 .msg {
   color: rgb(0, 0, 0);
@@ -159,6 +169,95 @@ button:disabled {
   margin-top: 20px;
   box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.452);
   transition: all 0.5s ease;
+}
+
+@keyframes appear{
+  from{
+    opacity: 0;
+    transform: scale(0);
+  }
+  to{
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes disappear{
+  from{
+    opacity: 1;
+    transform: scale(1);
+  }
+  to{
+    opacity: 0;
+    transform: scale(0);
+  }
+}
+
+#btn-go{
+  background-color: #00ff99;
+}
+
+.rounds-flex{
+  height: 60vh;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
+#rounds-dialog-box{
+  width: 80%;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  padding: 40px;
+  text-align: center;
+  opacity: 0;
+  display: none;
+  overflow: hidden;
+  background: linear-gradient(to right top, #0088ff, #0079ff, #0068ff, #0056ff, #003fff, #3834ff, #5224ff, #6800ff, #8900ff, #a400ff, #bc00ff, #d200ff);
+  border: 2px solid black;
+  border-radius: 20px;
+}
+
+.entry-appear{
+  animation: appear 1s forwards;
+}
+
+.exit-disappear{
+  animation: disappear 1s forwards;
+}
+
+#rounds-dialog-box label{
+  font-size: 2rem;
+  color: cornsilk;
+  width: 100%;
+  display: block;
+}
+
+#noofrounds{
+  padding: 10px;
+  width: 40%;
+  margin: 20px;
+  font-size: 2rem;
+  border-radius: 20px;
+  border: 2px solid black;
+  background-color: wheat;
+  text-align: center;
+  outline: 5px solid transparent;
+  box-shadow: 0px 0px 10px 10px transparent;
+  transition: all 0.5s ease;
+}
+
+#noofrounds:focus{
+  outline: 5px solid rgb(0, 255, 195);
+  border: 2px solid transparent;
+  box-shadow: 0px 0px 10px 10px rgb(0, 255, 195);
+}
+
+.rounds-con{
+  padding: 20px;
 }
 
 #select-player-mode-dialog-box {
@@ -305,7 +404,133 @@ button:disabled {
   text-align: center;
 }
 
-/* Small devices (phones, less than 600px) */
+#winner-ok-btn {
+  display: block;
+  margin: 10px auto;
+  background-color: #00ff99;
+}
+
+/* Responsive Styles */
+
+/* @media screen and (orientation: portrait) {
+  .heading {
+    font-size: 2.5rem;
+    margin: 10px;
+  }
+
+  .con {
+    width: 95%;
+  }
+
+  .img-con {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  .image {
+    width: 80px;
+    height: 80px;
+    margin: 8px;
+  }
+
+  .score-con {
+    width: 100%;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  #user-score,
+  #computer-score {
+    font-size: 2.2rem;
+  }
+
+  .btn {
+    font-size: 1rem;
+    padding: 10px 20px;
+  }
+
+  .msg {
+    font-size: 1rem;
+    padding: 10px;
+  }
+
+  .vscomputer-img-con,
+  .vsplayer-img-con {
+    width: 140px;
+    height: 140px;
+  }
+
+  .vs-text {
+    font-size: 1.6rem;
+  }
+
+  #winner-text {
+    font-size: 2.5rem;
+    margin: 30vh auto;
+  }
+}
+
+@media screen and (orientation: landscape) {
+  .heading {
+    font-size: 3.5rem;
+    margin: 15px;
+  }
+
+  .con {
+    width: 85%;
+  }
+
+  .img-con {
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+  }
+
+  .image {
+    width: 100px;
+    height: 100px;
+    margin: 10px;
+  }
+
+  .score-con {
+    width: 100%;
+    flex-direction: row;
+    justify-content: space-evenly;
+  }
+
+  #user-score,
+  #computer-score {
+    font-size: 3rem;
+  }
+
+  .btn {
+    font-size: 1.2rem;
+    padding: 12px 30px;
+  }
+
+  .msg {
+    font-size: 1.2rem;
+    padding: 12px;
+  }
+
+  .vscomputer-img-con,
+  .vsplayer-img-con {
+    width: 180px;
+    height: 180px;
+  }
+
+  .vs-text {
+    font-size: 2.2rem;
+  }
+
+  #winner-text {
+    font-size: 4rem;
+    margin: 35vh auto;
+  }
+} */
+
 @media (max-width: 600px) {
   .heading {
     font-size: 2rem;
@@ -314,11 +539,6 @@ button:disabled {
 
   .con {
     width: 90%;
-  }
-
-  #rounds {
-    font-size: 1.2rem;
-    padding: 10px 20px;
   }
 
   .img-con {
@@ -368,7 +588,6 @@ button:disabled {
     font-size: 24px;
   }
 }
-
 
 @media (min-width: 601px) and (max-width: 900px) {
   .heading {

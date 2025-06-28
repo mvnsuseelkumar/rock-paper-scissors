@@ -14,15 +14,15 @@
         <div class="con">
             <div id="rounds"></div>
             <div class="img-con">
-                <div class="image" id="rock">
+                <button class="image" id="rock" aria-label="Rock">
                     <img src="./images/rock.png" alt="Rock">
-                </div>
-                <div class="image" id="paper">
+                </button>
+                <button class="image" id="paper" aria-label="Paper">
                     <img src="./images/paper.png" alt="Paper">
-                </div>
-                <div class="image" id="scissors">
+                </button>
+                <button class="image" id="scissors" aria-label="Scissors">
                     <img src="./images/scissors.png" alt="Scissors">
-                </div>
+                </button>
             </div>
             <div class="score-con">
                 <div class="user">
@@ -36,19 +36,25 @@
             </div>
             <div class="msg" id="msg-con"></div>
             <button type="button" class="btn" id="btn-st">Start</button>
-            <button type="button" class="btn" id="btn-next">Next Round</button>
+            <!-- <button type="button" class="btn" id="btn-next">Next Round</button> -->
             <button type="button" class="btn" id="btn-reset">Reset</button>
-            <button type="button" class="btn" id="btn-end">End</button>
+            <!-- <button type="button" class="btn" id="btn-end">End</button> -->
         </div>
     </section>
     <section id="select-player-mode-dialog-box" class="entry-animation">
         <div class="vscomputer" onclick="select_mode('vscomputer')">
             <div class="vscomputer-img-con"><img src="./images/vscomputer.jpg" alt="vscomputer"></div>
-            <h2 class="vs-text"><span style="color:rgb(255, 0, 51);">Player <span style="font-size: 50px;">V</span></span><span style="font-size: 60px; font-style: italic; padding-right: 10px; color: rgb(255, 53, 26);">|</span><span style="color: rgb(255, 106, 0);"><span style="font-size: 50px;">S</span> PC</span></h2>
+            <h2 class="vs-text"><span style="color:rgb(255, 0, 51);">Player <span
+                        style="font-size: 50px;">V</span></span><span
+                    style="font-size: 60px; font-style: italic; padding-right: 10px; color: rgb(255, 53, 26);">|</span><span
+                    style="color: rgb(255, 106, 0);"><span style="font-size: 50px;">S</span> PC</span></h2>
         </div>
         <div class="vsplayer" onclick="select_mode('vsplayer')">
             <div class="vsplayer-img-con"><img src="./images/vsplayer2.png" alt="vsplayer"></div>
-            <h2 class="vs-text"><span style="color:rgb(255, 0, 51);">Player 1 <span style="font-size: 50px;">V</span></span><span style="font-size: 60px; font-style: italic; padding-right: 10px; color: rgb(255, 53, 26);">|</span><span style="color: rgb(255, 106, 0);"><span style="font-size: 50px;">S</span> Player 2</span></h2>
+            <h2 class="vs-text"><span style="color:rgb(255, 0, 51);">Player 1 <span
+                        style="font-size: 50px;">V</span></span><span
+                    style="font-size: 60px; font-style: italic; padding-right: 10px; color: rgb(255, 53, 26);">|</span><span
+                    style="color: rgb(255, 106, 0);"><span style="font-size: 50px;">S</span> Player 2</span></h2>
         </div>
     </section>
     <section id="vscon">
@@ -63,9 +69,17 @@
                     Your browser does not support the video tag.
                 </video>
             </div>
+            <button id="winner-ok-btn" class="btn">OK</button>
         </div>
     </section>
-
+    <section id="rounds-dialog-box">
+        <div class="rounds-flex">
+            <div class="rounds-con">
+                <label for="noofrounds">Enter How Many Rounds You Want To Play?</label>
+                <input type="number" min="1" name="noofrounds" id="noofrounds">
+                <button id="btn-go" class="btn">Go</button>
+            </div>
+        </div>
     </section>
     <script src="./script.js"></script>
 </body>
